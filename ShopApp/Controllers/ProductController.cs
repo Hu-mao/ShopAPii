@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Shop.App.Filters;
 using Shop.Domain.Models;
 
 namespace ShopApp.Controllers
@@ -6,6 +7,7 @@ namespace ShopApp.Controllers
     // http://localhost:port/api/product
     [ApiController]
     [Route("api/[controller]")]
+    [LogActionFilter]
     public class ProductController:ControllerBase
     {
         private List<Product> _products = new();

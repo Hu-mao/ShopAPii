@@ -1,4 +1,6 @@
 
+using ShopApp.Middlewares;
+
 namespace ShopApp
 {
     public static class MiddlewareExtensions
@@ -31,8 +33,11 @@ namespace ShopApp
             //app.UseHttpsRedirection();
 
             //app.UseAuthorization();
+            app.UseMiddleware<UserCheckMiddleware>();
             app.MapControllers();
             app.UseRequestTimer();
+
+            app.UseStaticFiles();
             app.Run();
         }
     }
