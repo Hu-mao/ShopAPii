@@ -31,17 +31,10 @@ namespace ShopApp
             //app.UseHttpsRedirection();
 
             //app.UseAuthorization();
-
-            public static class MiddlewareExtensions
-        {
-            public static IApplicationBuilder UseRequestTimer(this IApplicationBuilder builder)
-            {
-                return builder.UseMiddleware<RequestTimerMiddleware>();
-            }
-        }
-        app.MapControllers();
-            app.UseRequestTimer;
+            app.MapControllers();
+            app.UseRequestTimer();
             app.Run();
         }
+    }
 }
-}
+

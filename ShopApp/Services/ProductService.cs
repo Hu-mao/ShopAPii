@@ -1,16 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Shop.App.Interfaces;
 using Shop.Domain.Models;
 
-namespace ShopApp.Controllers
+namespace Shop.App.Services
 {
-    // http://localhost:port/api/product
-    [ApiController]
-    [Route("api/[controller]")]
-    public class ProductController:ControllerBase
+    public class ProductService : IProductService
     {
         private List<Product> _products = new();
-        [HttpGet]
-        public List<Product> GetProducts()
+        public ProductService()
         {
             _products.Add(new Product()
             {
@@ -22,6 +18,16 @@ namespace ShopApp.Controllers
                 Title = "Bread",
                 Price = 30.5f
             });
+        }
+
+        public void AddProduct(Product product)
+        {
+            _products.Add(product);
+        }
+
+        public List<Product> GetAllProducts()
+        {
+           
             return _products;
         }
     }
