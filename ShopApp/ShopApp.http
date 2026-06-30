@@ -3,16 +3,49 @@
 # GET {{ShopApp_HostAddress}}/weatherforecast/
 # Accept: application/json
 
+
+# POST /api/products
+
+# GET /api/products/4
+
+# PUT /api/products/4
+
+# GET /api/products/search?name=mon
+
+# DELETE /api/products/4
+
+# GET /api/products/4
+
 ###
-POST /api/products
+POST {{ShopApp_HostAddress}}/api/products
+Content-Type: application/json
+
+{
+  "name": "Monitor",
+  "price": 250,
+  "stock": 10
+}
+
 ###
-GET /api/products/4
+GET {{ShopApp_HostAddress}}/api/products/4
+
 ###
-PUT /api/products/4
+PUT {{ShopApp_HostAddress}}/api/products/4
+Content-Type: application/json
+
+{
+  "id": 4,
+  "name": "Updated Monitor",
+  "price": 300,
+  "stock": 15
+}
+
 ###
-GET /api/products/search?name=mon
+GET {{ShopApp_HostAddress}}/api/products/search?name=mon
+
 ###
-DELETE /api/products/4
+DELETE {{ShopApp_HostAddress}}/api/products/4
+
 ###
-GET /api/products/4
+GET {{ShopApp_HostAddress}}/api/products/4
 

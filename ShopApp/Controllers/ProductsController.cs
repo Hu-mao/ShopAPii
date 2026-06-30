@@ -31,13 +31,18 @@ namespace ShopApp.Controllers
         Price = 1500
     }
 };
+
         [HttpGet]
         public ActionResult<List<Product2>> GetProducts()
         {
             return Ok(_products);
         }
 
-        // GET: api/products/1
+        /// <summary>
+        /// Отримати товар за ідентифікатором.
+        /// </summary>
+        /// <param name="id">Ідентифікатор товару.</param>
+        /// <returns>Інформація про товар.</returns>
         [HttpGet("{id:int}")]
         public ActionResult<Product2> GetByIdProducts(int id)
         {
@@ -51,7 +56,7 @@ namespace ShopApp.Controllers
             return Ok(product);
         }
         [HttpPost]
-        public ActionResult<Product2> CreateProduct([FromBody] CreateUpdateProductDto dto)
+        public ActionResult<Product2> CreateProduct([FromBody] CreateProductDTO dto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

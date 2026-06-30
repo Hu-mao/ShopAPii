@@ -1,5 +1,7 @@
 
+using Microsoft.OpenApi;
 using ShopApp.Middlewares;
+using System.Reflection;
 
 namespace ShopApp
 {
@@ -21,9 +23,24 @@ namespace ShopApp
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             //builder.Services.AddOpenApi();
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Shop API",
+                    Version = "v1",
+                    Description = "API для керування товарами магазину."
 
+                });
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+
+                options.IncludeXmlComments(xmlPath);
+            });
             var app = builder.Build();
-
+            app.UseSwagger();
+            app.UseSwaggerUI();
             // Configure the HTTP request pipeline.
             //if (app.Environment.IsDevelopment())
             //{
